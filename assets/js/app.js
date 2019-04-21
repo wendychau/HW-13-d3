@@ -1,5 +1,3 @@
-// @TODO: YOUR CODE HERE!
-
 // SVG
 var margin = {
     top: 40,
@@ -24,12 +22,10 @@ var chartGroup = svg.append("g")
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
 d3.csv("assets/data/data.csv").then(function(healthData) {
-    //if (error) return console.warn(error);
-    //console.log(healthData);
 
     healthData.forEach(function(data) {
-        data.smokes = +data.smokes;
         data.income = +data.income;
+        data.smokes = +data.smokes;
     });
 
     // scales
@@ -78,7 +74,7 @@ d3.csv("assets/data/data.csv").then(function(healthData) {
         .attr("font-size", "12px")
         .attr("fill", "white")
 
-    // axis titles
+    // axes titles
     chartGroup.append("text")
         .attr("transform", `translate(${width / 2}, ${height + margin.top - 5})`)
         .attr("text-anchor", "middle")
@@ -93,5 +89,4 @@ d3.csv("assets/data/data.csv").then(function(healthData) {
         .attr("text-anchor", "middle")
         .attr("font-size", "20px")
         .text("Smokers (%)");
-
 });
